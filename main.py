@@ -2,16 +2,15 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 from redis_manager import RedisManager
+import os
 
 def login():
-    username = username_entry.get()
     password = password_entry.get()
 
     # Replace with your actual authentication logic
-    valid_username = "da"
-    valid_password = "da"
+    valid_password = os.environ.get("VALID_PASSWORD")
 
-    if username == valid_username and password == valid_password:
+    if password == valid_password:
         login_window.destroy()  # Close the login window
         create_password_manager_window()
     else:
@@ -126,11 +125,6 @@ login_window.title("Login")
 
 login_label = tk.Label(login_window, text="Login")
 login_label.pack(pady=10)
-
-username_label = tk.Label(login_window, text="Username:")
-username_label.pack()
-username_entry = tk.Entry(login_window)
-username_entry.pack(pady=5)
 
 password_label = tk.Label(login_window, text="Password:")
 password_label.pack()
