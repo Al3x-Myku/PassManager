@@ -38,4 +38,4 @@ Contributions are welcome! If you find a bug or want to add a new feature, feel 
 
 ---
 
-Built with ❤️ by [ Al3x-Myku ]
+Built with ❤️ by [ Al3x-Myku ](https://github.com/Al3x-Myku)
