@@ -44,9 +44,13 @@ def create_password_manager_window():
             password = redis_manager.get_password(site, username)
             if password:
                 messagebox.showinfo("Password", f"The password for this entry is: {password}")
+                copy_to_clipboard(password)  
             else:
                 messagebox.showinfo("Password", "Password not found in the database.")
-
+    def copy_to_clipboard(text):
+        root.clipboard_clear()  
+        root.clipboard_append(text)  
+        root.update()
     def clear_database():
         result = messagebox.askyesno("Clear Database", "Are you sure you want to clear the database?")
         if result:
@@ -90,7 +94,7 @@ def create_password_manager_window():
     add_button = tk.Button(root, text="Add Entry", command=add_row)
     add_button.pack(side="left", padx=20)
 
-    show_password_button = tk.Button(root, text="Show Password", command=show_password)
+    show_password_button = tk.Button(root, text="Show&Copy Password", command=show_password)
     show_password_button.pack(side="left", padx=20)
 
     clear_button = tk.Button(root, text="Clear Database", command=clear_database)
