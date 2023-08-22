@@ -12,3 +12,5 @@ class RedisManager:
 
     def clear_database(self):
         self.redis_client.flushdb()
+
+#App made by Al3x-Myku
