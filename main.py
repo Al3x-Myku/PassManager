@@ -7,7 +7,7 @@ def login():
     username = username_entry.get()
     password = password_entry.get()
 
-    # Replace with your actual authentication logic
+
     valid_username = "da"
     valid_password = "da"
 
@@ -17,7 +17,7 @@ def login():
     else:
         messagebox.showerror("Login Failed", "Invalid credentials")
 
-# Function to create and configure the password manager window
+
 def create_password_manager_window():
     
 
@@ -68,14 +68,12 @@ def create_password_manager_window():
     root = tk.Tk()
     root.title("Password Manager")
 
-    # Create Treeview widget
     tree = ttk.Treeview(root, columns=("Site", "Username", "Password"), show="headings")
     tree.heading("Site", text="Site")
     tree.heading("Username", text="Username")
     tree.heading("Password", text="Password")
     tree.pack(padx=20, pady=20, expand=True, fill="both")
 
-    # Entry fields for adding rows
     site_label = tk.Label(root, text="Site:")
     site_label.pack(anchor="w", padx=20)
     site_entry = tk.Entry(root)
@@ -91,32 +89,25 @@ def create_password_manager_window():
     password_entry = tk.Entry(root, show="*")
     password_entry.pack(anchor="w", padx=20, pady=(0, 10), fill="x")
 
-    # Add Entry button
     add_button = tk.Button(root, text="Add Entry", command=add_row)
     add_button.pack(side="left", padx=20)
 
-    # Show Password button
     show_password_button = tk.Button(root, text="Show Password", command=show_password)
     show_password_button.pack(side="left", padx=20)
 
-    # Clear Database button
     clear_button = tk.Button(root, text="Clear Database", command=clear_database)
     clear_button.pack(side="left", padx=20)
 
-    # Search Site
     search_label = tk.Label(root, text="Search Site:")
     search_label.pack(anchor="w", padx=20)
     search_entry = tk.Entry(root)
     search_entry.pack(side="left", anchor="w", padx=20, pady=(0, 10), fill="x", expand=True)
 
-    # Search button
     search_button = tk.Button(root, text="Search", command=load_data_from_redis)
     search_button.pack(side="left", anchor="w", padx=(0, 10), pady=10)
 
-    # Create a RedisManager instance
     redis_manager = RedisManager()
 
-    # Load data from Redis
     load_data_from_redis()
 
     root.mainloop()
