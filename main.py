@@ -72,8 +72,8 @@ def create_password_manager_window():
             item = tree.item(selected_item)
             site = item["values"][0]
             username = item["values"][1]
-            redis_manager.delete_entry(site, username)  # Assuming the RedisManager class has a delete_entry method
-            load_data_from_redis()  # Refresh the data in the treeview
+            redis_manager.delete_entry(site, username) 
+            load_data_from_redis()  
     root = tk.Tk()
     root.title("Password Manager")
 
