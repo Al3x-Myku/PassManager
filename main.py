@@ -66,7 +66,14 @@ def create_password_manager_window():
                 usernames_passwords = redis_manager.redis_client.hgetall(key)
                 for username in usernames_passwords:
                     tree.insert("", "end", values=(site, username, "****"))
-
+    def delete_row():
+        selected_item = tree.selection()
+        if selected_item:
+            item = tree.item(selected_item)
+            site = item["values"][0]
+            username = item["values"][1]
+            redis_manager.delete_entry(site, username)  # Assuming the RedisManager class has a delete_entry method
+            load_data_from_redis()  # Refresh the data in the treeview
     root = tk.Tk()
     root.title("Password Manager")
 
@@ -108,6 +115,8 @@ def create_password_manager_window():
     search_button = tk.Button(root, text="Search", command=load_data_from_redis)
     search_button.pack(side="left", anchor="w", padx=(0, 10), pady=10)
 
+    delete_button = tk.Button(root, text="Delete Entry", command=delete_row)
+    delete_button.pack(side="left", padx=20)
     redis_manager = RedisManager()
 
     load_data_from_redis()
