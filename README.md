@@ -25,7 +25,7 @@
 
 
 
-<!-- Features -->
+<!-- Features! -->
 ## Features
 
  Add, view, and manage passwords for different sites and usernames.
